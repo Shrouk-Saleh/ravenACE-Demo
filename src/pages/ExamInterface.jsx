@@ -353,6 +353,7 @@ function ExamInterface() {
   }
 
   const q = questions[current]
+  const questionType = q?.type || (q?.options ? 'mcq' : q?.codeTemplate ? 'coding' : 'written')
   const safeTimeLeft = timeLeft ?? 0
   const mins = String(Math.floor(safeTimeLeft / 60)).padStart(2, '0')
   const secs = String(safeTimeLeft % 60).padStart(2, '0')
@@ -417,9 +418,9 @@ function ExamInterface() {
                 Question {current + 1} of {questions.length}
               </span>
               <span className="px-3 py-1 bg-surface-container text-label-sm text-on-surface-variant rounded-full capitalize">
-                {q.type === 'truefalse' ? 'True / False'
-                  : q.type === 'written' ? 'Written Answer'
-                    : q.type === 'coding' ? 'Coding'
+                {questionType === 'truefalse' ? 'True / False'
+                  : questionType === 'written' ? 'Written Answer'
+                    : questionType === 'coding' ? 'Coding'
                       : 'Multiple Choice'}
               </span>
             </div>
@@ -427,7 +428,7 @@ function ExamInterface() {
             <p className="text-h2 text-on-surface mb-8 leading-relaxed">{q.text}</p>
 
             {/* MCQ options */}
-            {q.type === 'mcq' && (
+            {questionType === 'mcq' && (
               <div className="space-y-3">
                 {q.options?.map((opt, i) => {
                   const selected = answers[q._id] === opt
@@ -453,7 +454,7 @@ function ExamInterface() {
             )}
 
             {/* True/False options */}
-            {q.type === 'truefalse' && (
+            {questionType === 'truefalse' && (
               <div className="grid grid-cols-2 gap-4">
                 {['True', 'False'].map((opt) => {
                   const selected = answers[q._id] === opt
@@ -478,7 +479,7 @@ function ExamInterface() {
             )}
 
             {/* Written answer */}
-            {q.type === 'written' && (
+            {questionType === 'written' && (
               <div className="space-y-2">
                 <p className="text-label-sm text-on-surface-variant">Write your answer below. Be thorough — your answer will be AI-graded.</p>
                 <textarea
@@ -498,7 +499,7 @@ function ExamInterface() {
             )}
 
             {/* Coding answer */}
-            {q.type === 'coding' && (() => {
+            {questionType === 'coding' && (() => {
               const ca = codeAnswers[q._id] || { code: q.codeTemplate || '', language: q.allowedLanguages?.[0] || 'python' }
               const runResult = codeRunResults[q._id]
               const isRunning = runningCode[q._id]

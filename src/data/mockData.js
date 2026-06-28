@@ -219,14 +219,16 @@ export const mockAiReports = {
   'attempt-1': {
     summary: 'Excellent performance on Python basics! You showed a strong grasp of data structures and function definitions.',
     strengths: ['Understanding of list vs tuple mutability', 'Proper syntax for function definitions', 'Arithmetic operators and exponentiation'],
-    improvements: ['Review edge cases in dictionary comprehension', 'Look into generators for memory efficiency'],
-    recommendations: ['Take the Advanced Python Architecture exam next', 'Practice building custom decorators']
+    weaknesses: ['Review edge cases in dictionary comprehension', 'Look into generators for memory efficiency'],
+    recommendations: ['Take the Advanced Python Architecture exam next', 'Practice building custom decorators'],
+    readinessScore: 82
   },
   'attempt-2': {
     summary: 'Flawless execution on React Hooks and Lifecycle! Your understanding of component side effects and re-renders is top tier.',
     strengths: ['useEffect cleanup mechanism', 'Context API vs Props passing', 'Component memoization strategies'],
-    improvements: ['Explore custom hooks for fetching logic encapsulation'],
-    recommendations: ['Build a custom state management tool using useReducer and Context', 'Explore React Server Components']
+    weaknesses: ['Explore custom hooks for fetching logic encapsulation'],
+    recommendations: ['Build a custom state management tool using useReducer and Context', 'Explore React Server Components'],
+    readinessScore: 88
   }
 };
 

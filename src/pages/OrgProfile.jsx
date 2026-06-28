@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import Sidebar from '../components/Sidebar'
 import api from '../api/axios'
 import { IMAGE_BASE_URL } from '../utils/constants'
+import { Link } from 'react-router-dom'
 
 function OrgProfile() {
   const [profile, setProfile] = useState({ name: '', email: '', maxStudents: 0, maxInstructors: 0, subscriptionPlan: 'none' })

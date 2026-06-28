@@ -205,9 +205,9 @@ function AiPerformanceReport() {
                   <span className="material-symbols-outlined text-[20px] text-error">build</span>
                   <h3 className="text-h3 text-on-surface">Areas to Improve</h3>
                 </div>
-                {analysis.weaknesses?.length > 0 ? (
+                {((analysis.weaknesses || analysis.improvements)?.length > 0) ? (
                   <ul className="space-y-2">
-                    {analysis.weaknesses.map((w, i) => (
+                    {(analysis.weaknesses || analysis.improvements).map((w, i) => (
                       <li key={i} className="flex items-start gap-2 text-body-md text-on-surface">
                         <span className="material-symbols-outlined text-error text-[16px] mt-0.5 flex-shrink-0">arrow_circle_right</span>
                         {w}
